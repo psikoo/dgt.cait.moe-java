@@ -1,0 +1,5 @@
+services:
+  dgt-java:
+    container_name: dgt-java
+    image: dgt-java:1
+    restart: always
