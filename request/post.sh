@@ -7,7 +7,8 @@ apiKey=$4
 
 unix=$(date +%s)
 #* Post to imgur
-curl --location 'https://api.imgur.com/3/image' \
+curl -o /dev/null -s -w "Imgur status: %{http_code}\n" \
+     --location 'https://api.imgur.com/3/image' \
      --header 'Authorization: Client-ID 546c25a59c58ad7' \
      --form 'image=@"'$imagePath'"' \
      --form 'type="image"' \
