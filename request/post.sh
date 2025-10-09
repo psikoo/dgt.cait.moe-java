@@ -6,9 +6,10 @@ api=$3
 apiKey=$4
 
 unix=$(date +%s)
+#* Imgur status
+#echo Status: $(curl -o /dev/null -s -w "Imgur status: %{http_code}\n" --location 'https://api.imgur.com/3/')
 #* Post to imgur
-curl -o /dev/null -s -w "Imgur status: %{http_code}\n" \
-     --location 'https://api.imgur.com/3/image' \
+curl -s --location 'https://api.imgur.com/3/image' \
      --header 'Authorization: Client-ID 546c25a59c58ad7' \
      --form 'image=@"'$imagePath'"' \
      --form 'type="image"' \
@@ -17,8 +18,8 @@ curl -o /dev/null -s -w "Imgur status: %{http_code}\n" \
 sed -i 's/,/,\n/g' ./request/res$cameraName.json &&
 grep "link" ./request/res$cameraName.json > ./request/link$cameraName.txt &&
 sed -i 's/"link":"//g' ./request/link$cameraName.txt &&
-sed -i 's/",//g' ./request/link$cameraName.txt &&
-link=$(cat ./request/link$cameraName.txt) &&
+sed -i 's/",//g' ./request/link$cameraName.txt 
+link=$(cat ./request/link$cameraName.txt)
 echo Link: $link
 
 #* Get cameraId
