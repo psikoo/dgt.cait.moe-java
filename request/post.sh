@@ -7,7 +7,7 @@ apiKey=$4
 
 unix=$(date +%s)
 #* Imgur status
-#echo Status: $(curl -o /dev/null -s -w "Imgur status: %{http_code}\n" --location 'https://api.imgur.com/3/')
+echo Status: $(curl -o /dev/null -s -w "Imgur status: %{http_code}\n" --location 'https://api.imgur.com/3/')
 #* Post to imgur
 curl -s --location 'https://api.imgur.com/3/image' \
      --header 'Authorization: Client-ID 546c25a59c58ad7' \
