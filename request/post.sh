@@ -22,6 +22,11 @@ sed -i 's/",//g' ./request/link$cameraName.txt
 link=$(cat ./request/link$cameraName.txt)
 echo Link: $link
 
+if [[ -z "$link" ]]; then
+  echo !!!!!!!!!!!!!! NO LINK $2 
+  exit 1
+fi
+
 #* Get cameraId
 curl -s -k --location $api'/cameras/name/'$cameraName > ./request/res$cameraName.json &&
 sed -i 's/,/,\n/g' ./request/res$cameraName.json &&
