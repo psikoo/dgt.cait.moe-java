@@ -1,4 +1,4 @@
-FROM openjdk:17
+FROM eclipse-temurin:17-jdk
 WORKDIR /usr/src/app
 COPY .env ./.env
 COPY ./autodownload.jar ./
