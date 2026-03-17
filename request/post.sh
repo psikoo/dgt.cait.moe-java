@@ -14,7 +14,7 @@ curl -s --location 'https://api.imgur.com/3/image' \
      --form 'title="'$cameraName'"' \
      --form 'description="'$unix'"' > ./request/res$cameraName.json &&
 #* Imgur response
-echo Response: $(cat ./request/link$cameraName.txt) &&
+echo Response: $(cat ./request/res$cameraName.json) &&
 sed -i 's/,/,\n/g' ./request/res$cameraName.json &&
 grep "link" ./request/res$cameraName.json > ./request/link$cameraName.txt &&
 sed -i 's/"link":"//g' ./request/link$cameraName.txt &&
